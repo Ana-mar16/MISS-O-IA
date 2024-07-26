@@ -55,14 +55,50 @@ function mostraAlternativas() {
     for(const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
         botaoAlternativa.textContent = alternativa.texto;
-        botaoAlternativas.addEventListener("click", function(){
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativas); }
+       
+        function respostaSelecionada(opcaoSelecionada){
             atual++;
             mostraPergunta();
-        })
-        caixaAlternativas.appendChild(botaoAlternativas);
+        }
+        mostraPergunta();
+        
+        function respostaSelecionada(opcaoSelecionada){
+            const afirmacoes = opcaoSelecionada.afirmacoes;
+            historiaFinal = afirmacoes;
+            atual++;
+            mostraPergunta();
+        }
+        mostraPergunta();
+        
+        elementoOpcoes.addEventListener("click", () => respostaSelecionada(opcao));
+        function respostaSelecionada(opcaoSelecionada) {
+            const resposta = opcaoSelecionada.afirmacoes;
+            historiaFinal = afirmacoes;
+            atual++;
+            mostraPerguntaAtual();
+           }
+           
+let atual = 0;
+let perguntaAtual;
+let historiaFinal = "";
+// código omitido
+
+function mostraPergunta() {
+    if (atual >= perguntas.length) {
+        mostraResultado();
+        return;
     }
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+     caixaAlternativas.textContent = ;
+     textoResultado.textContent = historiaFinal;
+     caixaAlternativas.textContent = "";
+ }
+    mostraAlternativas();
 }
 
-mostraPergunta();
+// código omitido
 
 
